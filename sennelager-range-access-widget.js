@@ -186,7 +186,7 @@ function buildOverviewHTML(allRows) {
   const listRows = allRows.map(row => `<div class="list-row" id="entry-${dateKey(row.parsedDate)}">
     <div class="list-day">${escapeHTML(formatDate(row.parsedDate, "EEE"))}</div>
     <div class="list-date">${escapeHTML(formatDate(row.parsedDate, "dd.MM.yyyy"))}</div>
-    <div class="list-value"><span class="dot" style="background:${statusHex(row.status)}"></span>${escapeHTML(row.status)}</div>
+    <div class="list-value"><span class="dot" style="background:${statusHex(row.status)}"></span><span class="value-text">${escapeHTML(row.status)}</span></div>
   </div>`)
 
   return `<!doctype html>
@@ -204,10 +204,10 @@ function buildOverviewHTML(allRows) {
         .fixed { flex:0 0 auto; padding:calc(env(safe-area-inset-top) + 14px) 12px 0; background:var(--bg); }
         header { padding:0 4px 10px; }
         h1 { margin:0; font-size:20px; }
-        .calendar { width:100%; max-width:390px; margin:0 auto; table-layout:fixed; border-collapse:separate;
-          border-spacing:3px; padding:7px; border-radius:11px; background:var(--panel); text-align:center; }
+        .calendar { width:calc(100vw - 24px); max-width:390px; margin:0 auto; table-layout:fixed; border-collapse:separate;
+          border-spacing:0; border-radius:11px; background:var(--panel); text-align:center; }
         .calendar th { height:18px; color:var(--muted); font-size:10px; font-weight:600; }
-        .calendar th,.calendar td { width:12.5%; padding:0; }
+        .calendar th,.calendar td { padding:0; }
         .calendar tbody th { height:29px; }
         .calendar td { height:29px; color:#fff; font-size:11px; font-weight:650; }
         .calendar td span { display:inline-block; min-width:16px; padding-bottom:3px; border-bottom:3px solid transparent; }
@@ -229,13 +229,15 @@ function buildOverviewHTML(allRows) {
         .list-scroll { min-height:0; flex:1; overflow-y:auto; padding-bottom:calc(env(safe-area-inset-bottom) + 20px);
           -webkit-overflow-scrolling:touch; }
         .list { overflow:hidden; }
-        .list-head,.list-row { display:grid; grid-template-columns:42px 83px minmax(0,1fr); gap:7px; padding:10px 12px; }
+        .list-head,.list-row { display:grid; grid-template-columns:34px 76px minmax(0,1fr); gap:6px; padding:10px 8px; }
         .list-head { color:var(--muted); font-size:10px; font-weight:700; text-transform:uppercase; }
         .list-row { align-items:start; font-size:12px; }
         .list-row.selected { background:#2c2c2e; }
         .list-day { color:var(--text); font-weight:650; }
         .list-date { color:var(--muted); }
+        .list-day,.list-date,.list-value,.value-text { min-width:0; }
         .list-value { display:flex; align-items:flex-start; gap:7px; line-height:1.3; }
+        .value-text { display:block; overflow-wrap:anywhere; word-break:break-word; }
         .list-value .dot { margin-top:3px; }
         @media (min-width:700px) { .fixed,.list-section { width:760px; margin-left:auto; margin-right:auto; } }
       </style>
