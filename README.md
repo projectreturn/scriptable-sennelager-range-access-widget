@@ -1,44 +1,38 @@
-# Scriptable Sennelager Range Access Widget
+# Sennelager Range Access Widget
 
-Ein kompaktes iOS-Widget für [Scriptable](https://scriptable.app/), das die
-veröffentlichten Öffnungs- und Schließzeiten der Sennelager Training Area für
-heute und morgen anzeigt.
+Ein Scriptable-Widget für die aktuellen Zufahrtsinformationen des Truppenübungsplatzes Sennelager.
 
-Das Script liest die Angaben direkt von
-[bfgnet.de/sennelager-range-access](https://bfgnet.de/sennelager-range-access)
-aus und stellt sie in einem mittleren Widget dar.
+## Verhalten
 
-## Screenshot
-
-Echte Scriptable-Vorschau:
-
-<img src="screenshots/widget-sennelager.jpg" alt="Sennelager Range Access Widget" width="320">
-
-## Anzeige
-
-- **Rot:** „closed“ beziehungsweise gesperrt
-- **Orange:** Zeitangaben wie „from“, „until“ oder „between“
-- **Grün:** „open“ beziehungsweise geöffnet
-- Beim Antippen des Widgets öffnet sich die ursprüngliche Webseite.
+- Das Widget selbst entspricht der ursprünglichen GitHub-Version und zeigt die Einträge für heute und morgen.
+- Beim normalen Start des Skripts erscheint ausschließlich die Widget-Vorschau.
+- Erst ein Tipp auf das platzierte Widget öffnet fünf Kalenderwochen mit KW-Nummern sowie einer Liste mit Tag, Datum und Originalwert.
+- Die Kalendertage sind grün (offen), orange (zeitlich begrenzt) oder rot (geschlossen) markiert.
+- Der Kalender ist als kompakte Tabelle mit einer KW-Spalte und fünf Wochenzeilen aufgebaut. Die Statusfarbe erscheint nur als Linie unter der Tageszahl.
+- Kalender, Legende und Quellenlink stehen fest; nur die Werteliste ist scrollbar.
+- Die Liste zeigt unabhängig vom Fünf-Wochen-Kalender alle auf der Website gefundenen Einträge ab heute.
+- Ein Tipp auf einen Kalendertag mit Daten scrollt die Liste zum passenden Eintrag.
+- Ausschließlich der heutige Tag ist im Kalender blau eingerahmt.
+- Tageszellen und Listeneinträge werden ohne einzelne Rahmen oder Karten dargestellt.
+- Die Detailansicht verwendet eine einzeilige Überschrift ohne zusätzlichen KW-Bereich.
+- Die Detailansicht ist schwarz und schlicht, ohne Farbverläufe.
 
 ## Installation
 
-1. Installiere **Scriptable** auf dem iPhone.
-2. Erstelle in Scriptable ein neues Script.
-3. Kopiere den Inhalt von
-   [`sennelager-range-access-widget.js`](sennelager-range-access-widget.js)
-   vollständig hinein und speichere das Script.
-4. Starte es einmal direkt in Scriptable.
-5. Füge ein mittleres Scriptable-Widget zum Home-Bildschirm hinzu und wähle
-   das gespeicherte Script aus.
+1. `sennelager-range-access-widget.js` öffnen und den gesamten Inhalt kopieren.
+2. In Scriptable ein neues Skript anlegen und den Inhalt einfügen.
+3. Ein Scriptable-Widget auf dem Home-Bildschirm hinzufügen.
+4. In den Widget-Einstellungen dieses Skript auswählen.
 
-## Daten und Hinweise
+Die Daten stammen weiterhin von `https://bfgnet.de/sennelager-range-access` und werden beim Ausführen aktuell geladen.
+Der Abruf folgt dem Originalprojekt: Die Seite wird in einer Scriptable-`WebView` geladen und die Zeilen aus `.com-content-article__body tr` werden über ihre `td`-Zellen ausgelesen.
 
-Das Script ruft die öffentliche Sennelager-Webseite in einer Webansicht auf
-und liest daraus die Tabellenzeilen für heute und morgen. Änderungen an der
-Webseite oder ihrer HTML-Struktur können daher eine Anpassung des Scripts
-erforderlich machen.
+## Screenshots
 
-Dieses Projekt steht in keiner Verbindung zum Betreiber der Webseite oder zu
-den britischen Streitkräften. Prüfe vor Ort zusätzlich die offiziellen
-Hinweise und Beschilderungen.
+### Widget
+
+![Widget](screenshots/widget-view.png)
+
+### Kalenderansicht
+
+![Kalenderansicht](screenshots/calendar-view.png)
